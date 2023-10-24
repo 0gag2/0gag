@@ -62,7 +62,7 @@ def Teleserye_Cat():
     addDir('[B][COLOR yellow]PINOYs TV CHANNEL[/COLOR][/B]','https://pinoyhqteleserye.su/',111,ART + 'icon4.png',FANART,'')
     addDir('[B][COLOR yellow]PINOY TAMBAYAN HD[/COLOR][/B]','https://pinoytambayans.su/',110,ART + 'icon2.png',FANART,'')
     addDir('[B][COLOR yellow]FANTASERYE[/COLOR][/B]','https://fantaserye.su/',60,ART + 'icon5.png',FANART,'')
-    addDir('[B][COLOR yellow]PiNOY FLIX TV[/COLOR][/B]','https://pinoysflixtv.su/',111,ART + 'icon7.png',FANART,'')
+    addDir('[B][COLOR yellow]Tambayan.PH[/COLOR][/B]','https://pinoyhdflixs.su/',111,ART + 'icon7.png',FANART,'')
     setView('addons', 'cat-view')
 	
 def Search():
@@ -79,7 +79,7 @@ def Search():
 
 def test_content(url):
     OPEN = Open_Url(url)
-    Regex = re.compile('<div class="featured-thumbnail">.+?img width="203" height="150" src="(.+?)".+?<header>.+?href="(.+?)" title="(.+?)"',re.DOTALL).findall(OPEN)
+    Regex = re.compile('<div class="featured-thumbnail">.+?<noscript>.+?img width="203" height="150" src="(.+?)".+?<header>.+?href="(.+?)" title="(.+?)"',re.DOTALL).findall(OPEN)
     for icon,url,name in Regex:
         name = name.replace('&#8217;','\'').replace('&#8211;','-').replace('&#39;','\'').replace('&#038;','&').replace('Full Episode in HD','').replace('Full Episode In HD','').replace('Full Episode HD','').replace('&nbsp;',' ')
         addDir('[B][COLOR yellow]%s[/COLOR][/B]' %name,url,113,icon,icon,'')
@@ -253,7 +253,7 @@ def OFWpinoy_links(name,url):
 
 def ofwpinoyteleserye_content(url):
     OPEN = Open_Url(url)
-    Regex = re.compile('div class="featured-thumbnail".+?img width="203" height="150" src="(.+?)".+?h2 class="title front-view-title".+?a href="(.+?)" title="(.+?)"',re.DOTALL).findall(OPEN)
+    Regex = re.compile('<div class="featured-thumbnail">.+?img width="203" height="150" loading="lazy" data-layzr="(.+?)".+?href="(.+?)" title="(.+?)"',re.DOTALL).findall(OPEN)
     for icon,url,name in Regex:
         name = name.replace('&#8217;','\'').replace('&#8211;','-').replace('&#39;','\'').replace('&#038;','&').replace('Full Episode in HD','').replace('Full Episode In HD','').replace('Full Episode HD','').replace('&nbsp;',' ')
         addDir('[B][COLOR yellow]%s[/COLOR][/B]' %name,url,107,icon,icon,'')
